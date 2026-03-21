@@ -8,7 +8,6 @@ interface Artwork {
   titleZh: string
   year: string
   medium: '油画' | '流体画'
-  golfAccent?: boolean
 }
 
 const oilPaintings: Artwork[] = [
@@ -19,7 +18,6 @@ const oilPaintings: Artwork[] = [
     titleZh: '球场芳菲',
     year: '2020',
     medium: '油画',
-    golfAccent: true,
   },
   {
     id: 2,
@@ -44,7 +42,6 @@ const oilPaintings: Artwork[] = [
     titleZh: '球道',
     year: '2019',
     medium: '油画',
-    golfAccent: true,
   },
   {
     id: 5,
@@ -186,17 +183,6 @@ function ArtworkCard({ art }: { art: Artwork }) {
           loading="lazy"
           draggable={false}
         />
-        {art.golfAccent && (
-          <div className="gcard__golf-badge">
-            <svg viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="10" fill="rgba(250,250,248,0.12)" stroke="rgba(196,163,90,0.5)" strokeWidth="1"/>
-              <circle cx="9"  cy="10" r="1.2" fill="rgba(250,250,248,0.6)" />
-              <circle cx="13" cy="9"  r="1"   fill="rgba(250,250,248,0.5)" />
-              <circle cx="15" cy="12" r="1.2" fill="rgba(250,250,248,0.6)" />
-              <circle cx="11" cy="14" r="1"   fill="rgba(250,250,248,0.5)" />
-            </svg>
-          </div>
-        )}
       </div>
       <div className="gcard__caption">
         <div className="gcard__caption-titles">
