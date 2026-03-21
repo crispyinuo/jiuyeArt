@@ -32,53 +32,33 @@ export function Footer() {
           {/* Golf scorecard element */}
           <div className="footer__scorecard">
             <div className="footer__scorecard-header">
-              <span className="footer__scorecard-title">The 19th Hole</span>
+              <span className="footer__scorecard-title">The 9th Hole</span>
               <span className="footer__scorecard-sub">jiuye.art</span>
             </div>
             <div className="footer__scorecard-body">
               <div className="footer__scorecard-row">
-                <span>Gallery</span>
+                <span className="chinese">油画</span>
                 <span>·</span>
-                <span className="footer__scorecard-val">Open</span>
+                <span className="footer__scorecard-val">10 works</span>
               </div>
               <div className="footer__scorecard-row">
-                <span>Commissions</span>
+                <span className="chinese">流体画</span>
                 <span>·</span>
-                <span className="footer__scorecard-val">By request</span>
+                <span className="footer__scorecard-val">9 works</span>
+              </div>
+              <div className="footer__scorecard-row">
+                <span>On the course</span>
+                <span>·</span>
+                <span className="footer__scorecard-val">Always</span>
               </div>
               <div className="footer__scorecard-row">
                 <span>Handicap</span>
                 <span>·</span>
-                <span className="footer__scorecard-val">∞</span>
+                <span className="footer__scorecard-val chinese" style={{ letterSpacing: '0.06em' }}>任由</span>
               </div>
             </div>
           </div>
 
-          {/* Contact */}
-          <div className="footer__contact">
-            <span className="section-label" style={{ marginBottom: '20px', display: 'block' }}>
-              Contact · 联系
-            </span>
-            <p className="footer__contact-text">
-              For inquiries about works, prints, or commissions, please reach out.
-            </p>
-            <a href="mailto:hello@jiuye.art" className="footer__email">
-              hello@jiuye.art
-            </a>
-
-            {/* Golf hole decoration */}
-            <div className="footer__golf-hole">
-              <svg viewBox="0 0 120 50" fill="none">
-                {/* Green */}
-                <ellipse cx="60" cy="38" rx="55" ry="12" fill="rgba(45,90,39,0.1)" />
-                {/* Hole */}
-                <ellipse cx="60" cy="38" rx="8" ry="3" fill="rgba(28,28,28,0.25)" />
-                {/* Pin */}
-                <line x1="60" y1="5" x2="60" y2="38" stroke="rgba(196,163,90,0.45)" strokeWidth="1" />
-                <polygon points="60,5 76,14 60,23" fill="rgba(196,163,90,0.35)" />
-              </svg>
-            </div>
-          </div>
         </div>
 
         <div className="footer__bottom">

@@ -58,45 +58,13 @@ export function About() {
 
           {/* Right — visual */}
           <div className="about__visual" ref={sectionRef}>
-            {/* Abstract ink portrait placeholder */}
             <div className="about__portrait">
               <div className="about__portrait-inner">
-                {/* Brushstroke silhouette SVG */}
-                <svg className="about__ink-svg" viewBox="0 0 300 400" fill="none">
-                  <ellipse cx="150" cy="90" rx="55" ry="62" fill="rgba(28,28,28,0.88)" />
-                  <path
-                    d="M95,145 C85,200 80,260 90,320 C100,370 140,390 150,390 C160,390 200,370 210,320 C220,260 215,200 205,145"
-                    fill="rgba(28,28,28,0.82)"
-                  />
-                  <path
-                    d="M105,165 C88,185 72,210 78,240 C82,260 75,285 80,310"
-                    stroke="rgba(28,28,28,0.7)"
-                    strokeWidth="28"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M195,165 C212,185 228,210 222,240 C218,260 225,285 220,310"
-                    stroke="rgba(28,28,28,0.7)"
-                    strokeWidth="28"
-                    strokeLinecap="round"
-                  />
-                  {/* Gold accent strokes */}
-                  <path
-                    d="M70,230 C50,240 30,250 20,260"
-                    stroke="rgba(196,163,90,0.5)"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M230,230 C250,240 270,250 280,260"
-                    stroke="rgba(196,163,90,0.5)"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                  />
-                  {/* Golf green beneath feet */}
-                  <ellipse cx="150" cy="390" rx="90" ry="16" fill="rgba(45,90,39,0.15)" />
-                </svg>
-
+                <img
+                  src="/images/profile/jiuye-portrait.png"
+                  alt="九野 Jiuye"
+                  className="about__portrait-img"
+                />
                 <div className="about__portrait-label chinese">画者</div>
               </div>
             </div>
