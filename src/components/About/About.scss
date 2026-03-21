@@ -76,9 +76,20 @@
   font-weight: 300;
   margin-bottom: 20px;
 
-  &:last-of-type {
-    margin-bottom: 32px;
+  &--zh {
+    font-size: clamp(14px, 1.3vw, 15px);
+    line-height: 2.1;
+    letter-spacing: 0.04em;
+    color: rgba($ink, 0.88);
   }
+}
+
+.about__bio-divider {
+  width: 32px;
+  height: 1px;
+  background: $gold;
+  opacity: 0.5;
+  margin: 28px 0;
 }
 
 .about__quote {

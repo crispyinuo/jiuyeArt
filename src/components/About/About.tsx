@@ -21,18 +21,31 @@ export function About() {
               <span className="about__heading-en">Jiuye</span>
             </h2>
 
+            <p className="about__bio about__bio--zh chinese">
+              九野，取"九野苍茫"之意——画布即旷野，笔触即行旅。他以油彩游走于东西之间：江南水乡的白墙黛瓦，欧陆山村的炊烟晨光，冰川湖畔的静谧无言，皆可入画。笔下不问出处，只问感受。流体画是他的另一种语言——颜料在此不再被驱使，而是被释放，流淌、碰撞、沉积，如熔岩涌动，如星河漫溢，自行寻找归宿。
+            </p>
+
+            <p className="about__bio about__bio--zh chinese">
+              画室之外，高尔夫球场是九野另一块无形的画布。每一杆挥出，皆是一次与当下的对话——屏息、蓄力、顺势而为。球道上的那份专注与克制，与他面对空白画布时并无二致：皆是对"此刻"的全然交付。无论执笔还是执杆，他始终遵循同一信念。
+            </p>
+
+            <div className="about__bio-divider" />
+
             <p className="about__bio">
-              九野 is an artist whose work traverses the vast fields between tradition and
-              sensation — nine fields, nine expressions, each brushstroke an uncharted moment.
-              Drawing from classical Chinese ink techniques while embracing the spontaneous
-              language of contemporary feeling, Jiuye's paintings invite the viewer to pause
-              in the space between knowing and wondering.
+              Nine fields, nine worlds. 九野 paints at the intersection of discipline
+              and abandon — conjuring the quiet lanes of a Jiangnan water town and the
+              mist-softened hills of a European village with the same devoted hand that
+              dissolves into rivers of fluid colour, where pigment moves by gravity and
+              feeling alone. A glacial lake, a golden valley at dusk, a knowing frog in
+              a red velvet suit — each work an act of honest looking, unbounded by
+              geography or genre.
             </p>
 
             <p className="about__bio">
-              Beyond the studio, a quiet green fairway offers the same clarity as an
-              empty canvas — both demand presence, patience, and the willingness to let
-              instinct guide the hand.
+              Away from the studio, the golf course offers a different kind of clarity —
+              the same long patience, the same surrender to a single irreversible moment.
+              Whether standing over a canvas or a fairway, 九野 asks nothing of east
+              or west, only that the feeling be true.
             </p>
 
             <blockquote className="about__quote">
