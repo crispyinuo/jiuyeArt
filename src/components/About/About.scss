@@ -6,6 +6,10 @@
   position: relative;
   overflow: hidden;
   background: $paper;
+
+  @media (max-width: $mobile) {
+    padding: 72px 0;
+  }
 }
 
 .about__bg-stripe {
@@ -27,7 +31,7 @@
 
   @media (max-width: $tablet) {
     grid-template-columns: 1fr;
-    gap: 56px;
+    gap: 48px;
   }
 }
 
@@ -113,6 +117,10 @@
   max-width: 320px;
   aspect-ratio: 3/4;
   position: relative;
+
+  @media (max-width: $mobile) {
+    max-width: 220px;
+  }
 }
 
 .about__portrait-inner {
@@ -157,6 +165,10 @@
 .about__golf {
   width: 100%;
   max-width: 320px;
+
+  @media (max-width: $mobile) {
+    display: none;
+  }
 }
 
 .about__golf-scene {

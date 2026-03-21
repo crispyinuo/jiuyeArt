@@ -25,12 +25,14 @@ const artworks: Artwork[] = [
   { id: 9, title: 'Fairway Dreams', titleZh: '球道梦', year: '2024', medium: 'Watercolor', size: 'small', palette: ['#2D5A27', '#8AB87A', '#C4A35A', '#F5F0E8'] },
 ]
 
+const isTouch = () => window.matchMedia('(pointer: coarse)').matches
+
 function ArtworkCard({ art, index }: { art: Artwork; index: number }) {
   const [hovered, setHovered] = useState(false)
   const cardRef = useRef<HTMLDivElement>(null)
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return
+    if (!cardRef.current || isTouch()) return
     const rect = cardRef.current.getBoundingClientRect()
     const x = ((e.clientX - rect.left) / rect.width - 0.5) * 12
     const y = ((e.clientY - rect.top) / rect.height - 0.5) * 12
@@ -39,7 +41,7 @@ function ArtworkCard({ art, index }: { art: Artwork; index: number }) {
 
   const handleMouseLeave = () => {
     if (!cardRef.current) return
-    cardRef.current.style.transform = ''
+    if (!isTouch()) cardRef.current.style.transform = ''
     setHovered(false)
   }
 

@@ -30,8 +30,10 @@ export function Hero() {
     const particles: Particle[] = []
     const colors = ['rgba(28,28,28,', 'rgba(196,163,90,', 'rgba(45,90,39,']
 
+    const isMobile = window.matchMedia('(pointer: coarse)').matches
+
     const spawnBurst = (cx: number, cy: number) => {
-      const count = 60 + Math.random() * 40
+      const count = isMobile ? 20 + Math.random() * 15 : 60 + Math.random() * 40
       for (let i = 0; i < count; i++) {
         const angle = Math.random() * Math.PI * 2
         const speed = 0.5 + Math.random() * 3
