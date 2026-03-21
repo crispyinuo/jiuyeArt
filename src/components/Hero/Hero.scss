@@ -1,0 +1,271 @@
+@use '../../styles/variables' as *;
+@use '../../styles/animations';
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: $paper;
+}
+
+.hero__canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero__bg-texture {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse at 20% 80%, rgba($golf-green, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba($gold, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba($paper-warm, 0.8) 0%, transparent 100%);
+  z-index: 0;
+}
+
+.hero__brush-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero__brush-path {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+
+  &--1 {
+    animation: brushStroke 3s $ease-ink 0.8s forwards;
+  }
+  &--2 {
+    animation: brushStroke 2.5s $ease-ink 1.2s forwards;
+  }
+  &--3 {
+    animation: brushStroke 2s $ease-ink 1.6s forwards;
+  }
+}
+
+.hero__golf-flag {
+  position: absolute;
+  right: 8%;
+  bottom: 12%;
+  width: 60px;
+  opacity: 0;
+  animation: fadeIn 1.5s $ease-elegant 2.5s forwards;
+  z-index: 2;
+  animation-fill-mode: forwards;
+
+  svg { width: 100%; }
+
+  @media (max-width: $mobile) {
+    right: 5%;
+    bottom: 8%;
+    width: 44px;
+  }
+}
+
+.hero__content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+// Large Chinese name
+.hero__name-zh {
+  display: flex;
+  gap: 0.08em;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.9s $ease-ink, transform 0.9s $ease-ink;
+
+  &--visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero__char {
+  font-family: $font-chinese;
+  font-size: clamp(110px, 18vw, 200px);
+  font-weight: 400;
+  line-height: 1;
+  color: $ink;
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.8s $ease-ink, transform 0.8s $ease-ink;
+
+  .hero__name-zh--visible & {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  // Ink texture effect
+  background: linear-gradient(
+    135deg,
+    $ink 0%,
+    #303030 40%,
+    $ink 60%,
+    #282828 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  @media (max-width: $mobile) {
+    font-size: clamp(80px, 22vw, 140px);
+  }
+}
+
+// Divider
+.hero__divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  transform: scaleX(0.3);
+  transition: opacity 0.6s $ease-elegant, transform 0.6s $ease-elegant;
+
+  &--visible {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+.hero__divider-line {
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, $gold, transparent);
+
+  @media (max-width: $mobile) {
+    width: 40px;
+  }
+}
+
+.hero__divider-dot {
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: $gold;
+}
+
+// English name
+.hero__name-en {
+  font-family: $font-english;
+  font-size: clamp(14px, 2vw, 20px);
+  font-weight: 300;
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  color: $muted;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.8s $ease-elegant 0.1s, transform 0.8s $ease-elegant 0.1s;
+
+  &--visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Quote
+.hero__quote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.9s $ease-elegant, transform 0.9s $ease-elegant;
+  margin-top: 8px;
+
+  &--visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero__quote-zh {
+  font-size: clamp(16px, 2.5vw, 22px);
+  font-weight: 300;
+  letter-spacing: 0.35em;
+  color: $ink;
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 1px;
+    background: rgba($gold, 0.5);
+  }
+  &::before { right: calc(100% + 14px); }
+  &::after  { left:  calc(100% + 14px); }
+
+  @media (max-width: $mobile) {
+    &::before, &::after { display: none; }
+  }
+}
+
+.hero__quote-en {
+  font-family: $font-english;
+  font-style: italic;
+  font-size: clamp(11px, 1.2vw, 14px);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: $muted;
+}
+
+// Scroll hint
+.hero__scroll-hint {
+  position: absolute;
+  bottom: -180px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 1s $ease-elegant;
+
+  &--visible {
+    opacity: 1;
+    animation: float 3s ease-in-out 1s infinite;
+  }
+
+  @media (max-width: $mobile) {
+    bottom: -140px;
+  }
+}
+
+.hero__scroll-line {
+  display: block;
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, $gold, transparent);
+  animation: drawLine 1.2s $ease-elegant 2.5s both;
+}
+
+.hero__scroll-text {
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: $muted;
+}

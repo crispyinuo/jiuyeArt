@@ -1,0 +1,31 @@
+// Colors
+$ink: #1C1C1C;
+$paper: #FAFAF8;
+$paper-warm: #F5F0E8;
+$gold: #C4A35A;
+$gold-light: #D4B870;
+$gold-pale: #E8D9A8;
+$golf-green: #2D5A27;
+$golf-green-light: #4A7C42;
+$muted: #8B8580;
+$muted-light: #C2BDB8;
+$border: #E0DAD4;
+
+// Typography
+$font-english: 'Cormorant Garamond', Georgia, serif;
+$font-chinese: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+
+// Spacing
+$section-padding: 120px;
+$container-max: 1200px;
+
+// Transitions
+$ease-elegant: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$ease-ink: cubic-bezier(0.16, 1, 0.3, 1);
+$duration-slow: 1.2s;
+$duration-med: 0.6s;
+$duration-fast: 0.3s;
+
+// Breakpoints
+$mobile: 768px;
+$tablet: 1024px;

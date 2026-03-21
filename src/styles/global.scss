@@ -1,0 +1,81 @@
+@use './variables' as *;
+@use './animations';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: $paper;
+  color: $ink;
+  font-family: $font-english;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: $gold-pale;
+  color: $ink;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: $paper;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $muted-light;
+  border-radius: 3px;
+
+  &:hover {
+    background: $gold;
+  }
+}
+
+.container {
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 48px;
+
+  @media (max-width: $mobile) {
+    padding: 0 24px;
+  }
+}
+
+.section-label {
+  font-family: $font-english;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: $muted;
+}
+
+.chinese {
+  font-family: $font-chinese;
+}
+
+// Scroll reveal base state
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s $ease-elegant, transform 0.8s $ease-elegant;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

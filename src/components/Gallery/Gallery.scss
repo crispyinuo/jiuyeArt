@@ -1,0 +1,189 @@
+@use '../../styles/variables' as *;
+@use '../../styles/animations';
+
+.gallery {
+  padding: $section-padding 0;
+  background: $paper;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, $border, transparent);
+  }
+}
+
+.gallery__header {
+  text-align: center;
+  margin-bottom: 72px;
+
+  .section-label {
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+.gallery__title {
+  font-family: $font-chinese;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 400;
+  color: $ink;
+  line-height: 1.1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.gallery__title-sub {
+  font-family: $font-english;
+  font-size: clamp(13px, 1.5vw, 16px);
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: $muted;
+}
+
+.gallery__subtitle {
+  font-size: 15px;
+  font-style: italic;
+  color: $muted;
+  font-weight: 300;
+}
+
+// Masonry-inspired grid
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 200px;
+  gap: 16px;
+
+  @media (max-width: $tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $mobile) {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 260px;
+  }
+}
+
+// Card sizes
+.gallery__card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: transform 0.4s $ease-elegant, box-shadow 0.4s $ease-elegant;
+  transform-style: preserve-3d;
+  will-change: transform;
+
+  &:hover {
+    box-shadow: 0 20px 60px rgba($ink, 0.18);
+    z-index: 2;
+  }
+
+  &--small  { grid-row: span 2; }
+  &--medium { grid-row: span 2; }
+  &--large  { grid-row: span 3; grid-column: span 1; }
+  &--wide   { grid-row: span 2; grid-column: span 2; }
+  &--tall   { grid-row: span 4; }
+
+  @media (max-width: $tablet) {
+    &--wide  { grid-column: span 1; }
+    &--large { grid-row: span 2; }
+    &--tall  { grid-row: span 3; }
+  }
+
+  @media (max-width: $mobile) {
+    &--large, &--wide, &--tall { grid-column: span 1; grid-row: span 2; }
+  }
+}
+
+.gallery__image {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s $ease-elegant;
+  position: relative;
+
+  .gallery__card:hover & {
+    transform: scale(1.04);
+  }
+}
+
+.gallery__image-overlay {
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  opacity: 0.5;
+}
+
+.gallery__info {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba($ink, 0.85) 0%, rgba($ink, 0.3) 50%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+  opacity: 0;
+  transition: opacity 0.4s $ease-elegant;
+
+  &--visible {
+    opacity: 1;
+  }
+}
+
+.gallery__title-zh {
+  font-size: 18px;
+  font-weight: 400;
+  color: $paper;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+
+.gallery__title-en {
+  font-family: $font-english;
+  font-size: 13px;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba($paper, 0.75);
+  letter-spacing: 0.06em;
+}
+
+.gallery__meta {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $gold-light;
+  margin-top: 8px;
+}
+
+// Animated gold border on hover
+.gallery__border-anim {
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  pointer-events: none;
+  transition: border-color 0.4s $ease-elegant;
+
+  .gallery__card:hover & {
+    border-color: rgba($gold, 0.4);
+  }
+}
+
+.gallery__golf-ball {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  animation: float 4s ease-in-out infinite;
+
+  svg { width: 100%; }
+}
