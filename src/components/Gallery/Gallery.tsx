@@ -4,26 +4,196 @@ import './Gallery.scss'
 
 interface Artwork {
   id: number
+  src: string
   title: string
   titleZh: string
   year: string
   medium: string
   size: 'small' | 'medium' | 'large' | 'wide' | 'tall'
-  palette: string[]
+  golfAccent?: boolean
 }
 
-// Placeholder artworks — replace src with actual image paths when available
 const artworks: Artwork[] = [
-  { id: 1, title: 'Nine Fields at Dawn', titleZh: '九野晨光', year: '2023', medium: 'Ink on paper', size: 'large', palette: ['#2D3A2E', '#6B8F71', '#C4A35A', '#F5F0E8'] },
-  { id: 2, title: 'Mountain Mist', titleZh: '山间云雾', year: '2023', medium: 'Watercolor', size: 'medium', palette: ['#8BA7C7', '#C8D8E8', '#E8EDF2', '#2D4A6E'] },
-  { id: 3, title: 'Still Waters', titleZh: '静水', year: '2022', medium: 'Oil on canvas', size: 'tall', palette: ['#1C2B3A', '#4A7A8A', '#A8C4C0', '#E8E0D0'] },
-  { id: 4, title: 'Autumn Grass', titleZh: '秋草', year: '2022', medium: 'Ink on paper', size: 'wide', palette: ['#8B6914', '#C4943A', '#E8C870', '#F5EDD8'] },
-  { id: 5, title: 'The Green', titleZh: '青绿', year: '2024', medium: 'Mixed media', size: 'medium', palette: ['#2D5A27', '#4A7C42', '#8AB87A', '#DAEBD6'] },
-  { id: 6, title: 'Wind Brushes', titleZh: '风过留痕', year: '2024', medium: 'Ink on silk', size: 'small', palette: ['#1C1C1C', '#4A4A4A', '#9A9A9A', '#FAFAF8'] },
-  { id: 7, title: 'Red Horizon', titleZh: '红色地平线', year: '2021', medium: 'Oil on canvas', size: 'wide', palette: ['#8B2020', '#C45A3A', '#E89060', '#F5D8C0'] },
-  { id: 8, title: 'Lone Pine', titleZh: '孤松', year: '2023', medium: 'Ink on paper', size: 'tall', palette: ['#1C2B1C', '#2D5A27', '#6B8B60', '#E8EDE0'] },
-  { id: 9, title: 'Fairway Dreams', titleZh: '球道梦', year: '2024', medium: 'Watercolor', size: 'small', palette: ['#2D5A27', '#8AB87A', '#C4A35A', '#F5F0E8'] },
+  {
+    id: 1,
+    src: '/images/artworks/golf-course-in-bloom.webp',
+    title: 'Golf Course in Bloom',
+    titleZh: '球场芳菲',
+    year: '2023',
+    medium: 'Oil on canvas',
+    size: 'wide',
+    golfAccent: true,
+  },
+  {
+    id: 2,
+    src: '/images/artworks/glacial-lake.webp',
+    title: 'Glacial Lake',
+    titleZh: '冰湖',
+    year: '2022',
+    medium: 'Oil on canvas',
+    size: 'wide',
+  },
+  {
+    id: 3,
+    src: '/images/artworks/molten-earth.webp',
+    title: 'Molten Earth',
+    titleZh: '地火',
+    year: '2023',
+    medium: 'Abstract oil',
+    size: 'tall',
+  },
+  {
+    id: 4,
+    src: '/images/artworks/cosmic-current.webp',
+    title: 'Cosmic Current',
+    titleZh: '宇宙流彩',
+    year: '2024',
+    medium: '流体画',
+    size: 'large',
+  },
+  {
+    id: 5,
+    src: '/images/artworks/ember-dusk.webp',
+    title: 'Ember Dusk',
+    titleZh: '暮色流金',
+    year: '2024',
+    medium: '流体画',
+    size: 'large',
+  },
+  {
+    id: 6,
+    src: '/images/artworks/the-gentleman-frog.webp',
+    title: 'The Gentleman Frog',
+    titleZh: '绅士蛙',
+    year: '2023',
+    medium: 'Oil on canvas',
+    size: 'tall',
+  },
+  {
+    id: 7,
+    src: '/images/artworks/jiangnan-watertown.webp',
+    title: 'Jiangnan Watertown',
+    titleZh: '江南水乡',
+    year: '2021',
+    medium: 'Oil on canvas',
+    size: 'wide',
+  },
+  {
+    id: 8,
+    src: '/images/artworks/storm-breaking.webp',
+    title: 'Storm Breaking',
+    titleZh: '破晓',
+    year: '2022',
+    medium: 'Abstract oil',
+    size: 'medium',
+  },
+  {
+    id: 9,
+    src: '/images/artworks/ink-tide.webp',
+    title: 'Ink Tide',
+    titleZh: '墨潮',
+    year: '2023',
+    medium: '流体画',
+    size: 'medium',
+  },
+  {
+    id: 10,
+    src: '/images/artworks/starfield-in-teal.webp',
+    title: 'Starfield in Teal',
+    titleZh: '青色星迹',
+    year: '2024',
+    medium: '流体画',
+    size: 'tall',
+  },
+  {
+    id: 11,
+    src: '/images/artworks/golden-valley-at-dusk.webp',
+    title: 'Golden Valley at Dusk',
+    titleZh: '暮色山谷',
+    year: '2022',
+    medium: 'Oil on canvas',
+    size: 'wide',
+  },
+  {
+    id: 12,
+    src: '/images/artworks/the-fairway.webp',
+    title: 'The Fairway',
+    titleZh: '球道',
+    year: '2023',
+    medium: 'Oil on canvas',
+    size: 'wide',
+    golfAccent: true,
+  },
+  {
+    id: 13,
+    src: '/images/artworks/white-ascent.webp',
+    title: 'White Ascent',
+    titleZh: '白线腾升',
+    year: '2024',
+    medium: '流体画',
+    size: 'tall',
+  },
+  {
+    id: 14,
+    src: '/images/artworks/gold-and-blue.webp',
+    title: 'Gold and Blue',
+    titleZh: '金蓝交汇',
+    year: '2024',
+    medium: '流体画',
+    size: 'large',
+  },
+  {
+    id: 15,
+    src: '/images/artworks/mountain-chapel-pastoral.webp',
+    title: 'Mountain Chapel Pastoral',
+    titleZh: '山间牧歌',
+    year: '2021',
+    medium: 'Oil on canvas',
+    size: 'medium',
+  },
+  {
+    id: 16,
+    src: '/images/artworks/alpine-village-morning.webp',
+    title: 'Alpine Village Morning',
+    titleZh: '山村晨光',
+    year: '2022',
+    medium: 'Oil on canvas',
+    size: 'tall',
+  },
+  {
+    id: 17,
+    src: '/images/artworks/sunday-village.webp',
+    title: 'Sunday Village',
+    titleZh: '礼拜日',
+    year: '2021',
+    medium: 'Oil on canvas',
+    size: 'medium',
+  },
+  {
+    id: 18,
+    src: '/images/artworks/rising-forms.webp',
+    title: 'Rising Forms',
+    titleZh: '潮生',
+    year: '2024',
+    medium: '流体画',
+    size: 'medium',
+  },
+  {
+    id: 19,
+    src: '/images/artworks/sea-pier-in-wind.webp',
+    title: 'Sea Pier in Wind',
+    titleZh: '海风栈桥',
+    year: '2023',
+    medium: 'Oil on canvas',
+    size: 'wide',
+  },
 ]
+
+const MEDIUM_LABELS: Record<string, { en: string; zh: string }> = {
+  'Oil on canvas': { en: 'Oil on canvas', zh: '油画' },
+  'Abstract oil':  { en: 'Abstract oil',  zh: '抽象油画' },
+  '流体画':         { en: 'Fluid Art',     zh: '流体画' },
+}
 
 const isTouch = () => window.matchMedia('(pointer: coarse)').matches
 
@@ -48,32 +218,29 @@ function ArtworkCard({ art, index }: { art: Artwork; index: number }) {
   return (
     <div
       className={`gallery__card gallery__card--${art.size} reveal`}
-      style={{ transitionDelay: `${(index % 3) * 100}ms` }}
+      style={{ transitionDelay: `${(index % 3) * 80}ms` }}
       ref={cardRef}
       onMouseEnter={() => setHovered(true)}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Placeholder canvas — replace with <img> when real artwork is ready */}
-      <div
-        className="gallery__image"
-        style={{
-          background: `linear-gradient(135deg, ${art.palette[0]} 0%, ${art.palette[1]} 35%, ${art.palette[2]} 70%, ${art.palette[3]} 100%)`,
-        }}
-      >
-        {/* Ink-brush noise overlay */}
+      <div className="gallery__image">
+        <img
+          src={art.src}
+          alt={art.titleZh}
+          loading="lazy"
+          draggable={false}
+        />
         <div className="gallery__image-overlay" />
 
-        {/* Golf ball accent on 'The Green' */}
-        {art.id === 5 && (
-          <div className="gallery__golf-ball">
-            <svg viewBox="0 0 40 40" fill="none">
-              <circle cx="20" cy="20" r="18" fill="rgba(250,250,248,0.9)" />
-              <circle cx="14" cy="16" r="2" fill="rgba(0,0,0,0.12)" />
-              <circle cx="22" cy="13" r="1.5" fill="rgba(0,0,0,0.1)" />
-              <circle cx="26" cy="20" r="2" fill="rgba(0,0,0,0.12)" />
-              <circle cx="18" cy="24" r="1.5" fill="rgba(0,0,0,0.1)" />
-              <circle cx="26" cy="28" r="1.8" fill="rgba(0,0,0,0.1)" />
+        {art.golfAccent && (
+          <div className="gallery__golf-badge">
+            <svg viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" fill="rgba(250,250,248,0.15)" stroke="rgba(196,163,90,0.5)" strokeWidth="1"/>
+              <circle cx="9" cy="10" r="1.2" fill="rgba(250,250,248,0.6)" />
+              <circle cx="13" cy="9" r="1" fill="rgba(250,250,248,0.5)" />
+              <circle cx="15" cy="12" r="1.2" fill="rgba(250,250,248,0.6)" />
+              <circle cx="11" cy="14" r="1" fill="rgba(250,250,248,0.5)" />
             </svg>
           </div>
         )}
@@ -82,7 +249,11 @@ function ArtworkCard({ art, index }: { art: Artwork; index: number }) {
       <div className={`gallery__info ${hovered ? 'gallery__info--visible' : ''}`}>
         <p className="gallery__title-zh chinese">{art.titleZh}</p>
         <p className="gallery__title-en">{art.title}</p>
-        <p className="gallery__meta">{art.medium} · {art.year}</p>
+        <p className="gallery__meta">
+          {MEDIUM_LABELS[art.medium].en}
+          <span className="gallery__meta-zh chinese"> · {MEDIUM_LABELS[art.medium].zh}</span>
+          {' · '}{art.year}
+        </p>
       </div>
 
       <div className="gallery__border-anim" />
