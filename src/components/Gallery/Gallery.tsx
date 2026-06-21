@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react'
 import { useScrollReveal } from '../../hooks/useScrollReveal'
 import './Gallery.scss'
 
@@ -311,6 +312,27 @@ function GallerySection({ id, label, titleZh, titleEn, artworks, columns = 3 }: 
 }
 
 export function Gallery() {
+  const [activeTab, setActiveTab] = useState<'oil' | 'fluid'>('oil')
+  const panelRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const panel = panelRef.current
+    if (!panel) return
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.12 }
+    )
+    panel.querySelectorAll<HTMLElement>('.reveal:not(.visible)').forEach(el => observer.observe(el))
+    return () => observer.disconnect()
+  }, [activeTab])
+
   return (
     <section className="gallery" id="gallery">
       <div className="container">
@@ -324,30 +346,54 @@ export function Gallery() {
             A collection of works that follow feeling beyond direction.
           </p>
         </div>
+      </div>
 
-        <GallerySection
-          id="gallery-oil"
-          label="Oil on Canvas · 油画"
-          titleZh="油画"
-          titleEn="Oil Paintings"
-          artworks={oilPaintings}
-          columns={2}
-        />
-
-        <div className="gallery__section-divider">
-          <span className="gallery__section-divider-line" />
-          <span className="gallery__section-divider-dot" />
-          <span className="gallery__section-divider-line" />
+      <div className="gallery__tabs-wrap">
+        <div className="container">
+          <div className="gallery__tabs">
+            <button
+              className={`gallery__tab${activeTab === 'oil' ? ' gallery__tab--active' : ''}`}
+              onClick={() => setActiveTab('oil')}
+            >
+              <span className="gallery__tab-zh chinese">油画</span>
+              <span className="gallery__tab-en">Oil on Canvas</span>
+            </button>
+            <button
+              className={`gallery__tab${activeTab === 'fluid' ? ' gallery__tab--active' : ''}`}
+              onClick={() => setActiveTab('fluid')}
+            >
+              <span className="gallery__tab-zh chinese">流体画</span>
+              <span className="gallery__tab-en">Fluid Art</span>
+            </button>
+          </div>
         </div>
+      </div>
 
-        <GallerySection
-          id="gallery-fluid"
-          label="Fluid Art · 流体画"
-          titleZh="流体画"
-          titleEn="Fluid Art"
-          artworks={fluidArt}
-          columns={3}
-        />
+      <div className="container">
+        <div className="gallery__panel" ref={panelRef}>
+          {activeTab === 'oil' && (
+            <GallerySection
+              key="oil"
+              id="gallery-oil"
+              label="Oil on Canvas · 油画"
+              titleZh="油画"
+              titleEn="Oil Paintings"
+              artworks={oilPaintings}
+              columns={2}
+            />
+          )}
+          {activeTab === 'fluid' && (
+            <GallerySection
+              key="fluid"
+              id="gallery-fluid"
+              label="Fluid Art · 流体画"
+              titleZh="流体画"
+              titleEn="Fluid Art"
+              artworks={fluidArt}
+              columns={3}
+            />
+          )}
+        </div>
       </div>
     </section>
   )
