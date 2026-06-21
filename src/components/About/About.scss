@@ -24,15 +24,11 @@
 }
 
 .about__inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-
-  @media (max-width: $tablet) {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .about__text {
@@ -115,72 +111,12 @@
   font-family: $font-english;
 }
 
-// Visual side
-.about__visual {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
-}
-
-.about__portrait {
-  width: 100%;
-  max-width: 320px;
-  aspect-ratio: 3/4;
-  position: relative;
-
-  @media (max-width: $mobile) {
-    max-width: 220px;
-  }
-}
-
-.about__portrait-inner {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(145deg, $paper-warm, rgba($gold-pale, 0.3));
-  border: 1px solid $border;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  border-radius: 1px;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 8px;
-    border: 1px solid rgba($gold, 0.2);
-    pointer-events: none;
-  }
-}
-
-.about__portrait-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
-}
-
-.about__portrait-label {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  font-size: 12px;
-  letter-spacing: 0.15em;
-  color: $muted;
-}
-
 // Golf scene
 .about__golf {
   width: 100%;
-  max-width: 320px;
-
-  @media (max-width: $mobile) {
-    display: none;
-  }
+  max-width: 280px;
+  margin-top: 16px;
+  align-self: center;
 }
 
 .about__golf-scene {
