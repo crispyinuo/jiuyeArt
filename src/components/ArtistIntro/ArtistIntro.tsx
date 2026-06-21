@@ -5,7 +5,7 @@ export function ArtistIntro() {
   const textRef = useScrollReveal<HTMLDivElement>(0.1)
 
   return (
-    <section className="artist-intro">
+    <section className="artist-intro" id="about">
       <div className="artist-intro__inner">
         <div className="artist-intro__portrait">
           <img

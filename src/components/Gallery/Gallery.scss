@@ -85,22 +85,22 @@
 // ─── Individual style section ─────────────────────────────────────────────────
 
 .gallery__section {
-  margin-bottom: 80px;
+  margin-bottom: 140px;
 
   &:last-child { margin-bottom: 0; }
 
-  @media (max-width: $mobile) { margin-bottom: 56px; }
+  @media (max-width: $mobile) { margin-bottom: 72px; }
 }
 
 .gallery__section-header {
-  margin-bottom: 36px;
+  margin-bottom: 56px;
 
   .section-label {
     display: block;
     margin-bottom: 12px;
   }
 
-  @media (max-width: $mobile) { margin-bottom: 24px; }
+  @media (max-width: $mobile) { margin-bottom: 32px; }
 }
 
 .gallery__section-title {
@@ -128,9 +128,9 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  margin: 72px 0;
+  margin: 120px 0;
 
-  @media (max-width: $mobile) { margin: 48px 0; }
+  @media (max-width: $mobile) { margin: 64px 0; }
 }
 
 .gallery__section-divider-line {
@@ -154,7 +154,7 @@
 // ─── CSS columns grid ─────────────────────────────────────────────────────────
 
 .gallery__columns {
-  column-gap: 20px;
+  column-gap: 32px;
 
   &--2 {
     columns: 2;
@@ -169,13 +169,19 @@
     @media (max-width: $tablet)  { columns: 2; }
     @media (max-width: $mobile)  { columns: 1; }
   }
+
+  @media (max-width: $mobile) {
+    margin-left: -24px;
+    margin-right: -24px;
+    column-gap: 0;
+  }
 }
 
 // ─── Artwork card ─────────────────────────────────────────────────────────────
 
 .gcard {
   break-inside: avoid;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   cursor: pointer;
 
   &:hover .gcard__image-wrap img {
@@ -186,7 +192,9 @@
     box-shadow: 0 12px 40px rgba($ink, 0.16);
   }
 
-  @media (max-width: $mobile) { margin-bottom: 14px; }
+  @media (max-width: $mobile) {
+    margin-bottom: 2px;
+  }
 }
 
 .gcard__image-wrap {
@@ -220,6 +228,8 @@
     flex-direction: column;
     gap: 2px;
     align-items: flex-start;
+    padding: 10px 24px 0;
+    margin-bottom: 12px;
   }
 }
 

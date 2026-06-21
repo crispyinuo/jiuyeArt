@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react'
 import './Navigation.scss'
 
 const navLinks = [
-  { href: '#gallery', label: 'Gallery', zh: '画廊' },
   { href: '#about', label: 'About', zh: '关于' },
-  { href: '#contact', label: 'Contact', zh: '联系' },
+  { href: '#gallery', label: 'Gallery', zh: '画廊' },
 ]
 
 export function Navigation() {

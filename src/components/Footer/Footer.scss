@@ -2,7 +2,7 @@
 
 .footer {
   background: $paper;
-  padding: 0 0 48px;
+  padding: 0 0 40px;
   position: relative;
 
   &::before {
@@ -20,7 +20,7 @@
   width: 100%;
   height: 60px;
   overflow: hidden;
-  margin-bottom: 60px;
+  margin-bottom: 48px;
 
   svg {
     width: 100%;
@@ -28,137 +28,157 @@
   }
 
   @media (max-width: $mobile) {
-    margin-bottom: 36px;
+    margin-bottom: 32px;
   }
 }
 
-.footer__inner {
+// ─── About add-on ─────────────────────────────────────────────────────────────
+
+.footer__about {
+  padding-bottom: 72px;
+}
+
+.footer__about-inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  margin-bottom: 60px;
+  grid-template-columns: 260px 1fr;
+  gap: 72px;
+  align-items: start;
+  max-width: 860px;
+  margin: 0 auto;
+
+  @media (max-width: $tablet) {
+    gap: 48px;
+    grid-template-columns: 200px 1fr;
+  }
 
   @media (max-width: $mobile) {
     grid-template-columns: 1fr;
     gap: 40px;
+    max-width: 480px;
   }
 }
 
-// Brand
-.footer__brand {
+.footer__left {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 28px;
 }
 
-.footer__logo-zh {
-  font-size: clamp(40px, 8vw, 52px);
+.footer__golf-svg {
+  width: 100%;
+  opacity: 0.9;
+}
+
+.footer__golf-ball {
+  animation: ballRoll 3s ease-in-out infinite alternate;
+}
+
+// Right column: name + content stacked
+.footer__about-right {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.footer__about-name {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer__name-zh {
+  font-size: clamp(52px, 7vw, 80px);
   font-weight: 400;
-  color: $ink;
   line-height: 1;
   letter-spacing: -0.02em;
+  color: $ink;
   background: linear-gradient(135deg, $ink 0%, #484848 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.footer__logo-en {
+.footer__name-en {
   font-family: $font-english;
   font-size: 11px;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.4em;
   text-transform: uppercase;
   color: $muted;
 }
 
-.footer__tagline {
-  font-size: 14px;
-  letter-spacing: 0.18em;
-  color: $gold;
-  margin-top: 8px;
-  font-weight: 300;
-}
-
-// Golf scorecard
-.footer__scorecard {
-  border: 1px solid $border;
-  padding: 20px;
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 4px;
-    border: 1px solid rgba($gold, 0.12);
-    pointer-events: none;
+.footer__about-content {
+  .section-label {
+    display: block;
+    margin-bottom: 24px;
   }
 }
 
-.footer__scorecard-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  border-bottom: 1px solid rgba($gold, 0.25);
-  padding-bottom: 12px;
-  margin-bottom: 16px;
+.footer__quote {
+  border-left: 2px solid $gold;
+  padding: 14px 0 14px 20px;
+  margin: 0;
 }
 
-.footer__scorecard-title {
-  font-family: $font-english;
-  font-size: 13px;
+.footer__quote-text {
+  display: block;
+  font-size: clamp(15px, 1.8vw, 18px);
   font-weight: 400;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.25em;
   color: $ink;
+  margin-bottom: 8px;
 }
 
-.footer__scorecard-sub {
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: $muted;
-}
-
-.footer__scorecard-body {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.footer__scorecard-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.footer__quote-cite {
+  font-style: italic;
   font-size: 12px;
   color: $muted;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
+  font-family: $font-english;
 }
 
-.footer__scorecard-val {
-  color: $ink;
-  font-style: italic;
+.footer__about-divider {
+  width: 28px;
+  height: 1px;
+  background: $gold;
+  opacity: 0.4;
+  margin: 24px 0;
 }
 
+.footer__about-bio {
+  font-size: clamp(12px, 1.1vw, 13px);
+  line-height: 2.1;
+  letter-spacing: 0.04em;
+  color: rgba($ink, 0.6);
+}
 
-// Bottom bar
+// ─── Bottom bar ───────────────────────────────────────────────────────────────
+
 .footer__bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 28px;
-  border-top: 1px solid rgba($border, 0.7);
+  padding-top: 24px;
+  border-top: 1px solid rgba($border, 0.6);
 
   @media (max-width: $mobile) {
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
     text-align: center;
   }
 }
 
 .footer__copy,
-.footer__made {
+.footer__made,
+.footer__tagline {
   font-size: 11px;
   letter-spacing: 0.12em;
   color: $muted;
+}
+
+.footer__tagline {
+  color: rgba($gold, 0.7);
+  font-size: 12px;
+  letter-spacing: 0.18em;
 }
 
 .footer__made {

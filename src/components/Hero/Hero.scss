@@ -11,6 +11,18 @@
   justify-content: center;
   overflow: hidden;
   background: $paper;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 160px;
+    background: linear-gradient(to bottom, transparent, $paper);
+    z-index: 4;
+    pointer-events: none;
+  }
 }
 
 .hero__canvas {
@@ -51,25 +63,6 @@
   }
   &--3 {
     animation: brushStroke 2s $ease-ink 1.6s forwards;
-  }
-}
-
-.hero__golf-flag {
-  position: absolute;
-  right: 8%;
-  bottom: 12%;
-  width: 60px;
-  opacity: 0;
-  animation: fadeIn 1.5s $ease-elegant 2.5s forwards;
-  z-index: 2;
-  animation-fill-mode: forwards;
-
-  svg { width: 100%; }
-
-  @media (max-width: $mobile) {
-    right: 5%;
-    bottom: 8%;
-    width: 44px;
   }
 }
 

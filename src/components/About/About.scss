@@ -24,45 +24,64 @@
 }
 
 .about__inner {
-  max-width: 640px;
+  display: grid;
+  grid-template-columns: 46% 1fr;
+  gap: 80px;
+  align-items: start;
+  max-width: 1080px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
 
-.about__text {
-  .section-label {
-    display: block;
-    margin-bottom: 24px;
+  @media (max-width: $tablet) {
+    gap: 56px;
+    grid-template-columns: 42% 1fr;
+  }
+
+  @media (max-width: $mobile) {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    max-width: 480px;
   }
 }
 
-.about__heading {
+// ─── Feature painting ─────────────────────────────────────────────────────────
+
+.about__painting-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  box-shadow: 8px 12px 48px rgba($ink, 0.14);
+}
+
+.about__painting-caption {
   display: flex;
-  flex-direction: column;
-  margin-bottom: 32px;
-  gap: 6px;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 2px 0;
+  border-top: 1px solid rgba($border, 0.7);
+  gap: 12px;
+
+  @media (max-width: $mobile) {
+    flex-direction: column;
+    gap: 4px;
+  }
 }
 
-.about__heading-zh {
-  font-size: clamp(48px, 7vw, 80px);
+.about__painting-title {
+  font-size: 14px;
   font-weight: 400;
-  line-height: 1;
   color: $ink;
-  background: linear-gradient(135deg, $ink 0%, #383838 50%, $ink 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.06em;
 }
 
-.about__heading-en {
-  font-family: $font-english;
-  font-size: clamp(14px, 2vw, 18px);
-  font-weight: 300;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: $muted;
+// ─── Text column ──────────────────────────────────────────────────────────────
+
+.about__text {
+  padding-top: 8px;
+
+  .section-label {
+    display: block;
+    margin-bottom: 32px;
+  }
 }
 
 .about__bio {
@@ -72,11 +91,11 @@
   font-weight: 300;
   margin-bottom: 20px;
 
-  &--zh {
-    font-size: clamp(14px, 1.3vw, 15px);
+  &--secondary {
+    font-size: clamp(12px, 1.1vw, 13px);
     line-height: 2.1;
     letter-spacing: 0.04em;
-    color: rgba($ink, 0.88);
+    color: rgba($ink, 0.6);
   }
 }
 
@@ -85,7 +104,7 @@
   height: 1px;
   background: $gold;
   opacity: 0.5;
-  margin: 28px 0;
+  margin: 32px 0;
 }
 
 .about__quote {
@@ -109,20 +128,4 @@
   color: $muted;
   letter-spacing: 0.06em;
   font-family: $font-english;
-}
-
-// Golf scene
-.about__golf {
-  width: 100%;
-  max-width: 280px;
-  margin-top: 16px;
-  align-self: center;
-}
-
-.about__golf-scene {
-  width: 100%;
-}
-
-.about__golf-ball-anim {
-  animation: ballRoll 3s $ease-elegant infinite alternate;
 }

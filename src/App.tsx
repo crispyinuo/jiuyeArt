@@ -3,7 +3,6 @@ import { Navigation } from './components/Navigation/Navigation'
 import { Hero } from './components/Hero/Hero'
 import { ArtistIntro } from './components/ArtistIntro/ArtistIntro'
 import { Gallery } from './components/Gallery/Gallery'
-import { About } from './components/About/About'
 import { Footer } from './components/Footer/Footer'
 import { InkCursor } from './components/InkCursor/InkCursor'
 import { useEffect } from 'react'
@@ -35,7 +34,6 @@ function App() {
         <Hero />
         <ArtistIntro />
         <Gallery />
-        <About />
       </main>
       <Footer />
     </>

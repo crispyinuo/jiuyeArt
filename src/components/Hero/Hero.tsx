@@ -129,16 +129,7 @@ export function Hero() {
         />
       </svg>
 
-      {/* Golf flag decoration */}
-      <div className="hero__golf-flag">
-        <svg viewBox="0 0 60 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="30" y1="0" x2="30" y2="110" stroke="rgba(196,163,90,0.35)" strokeWidth="1.5"/>
-          <polygon points="30,5 55,22 30,39" fill="rgba(196,163,90,0.25)" />
-          <ellipse cx="30" cy="112" rx="14" ry="4" fill="rgba(45,90,39,0.2)" />
-        </svg>
-      </div>
-
-      <div className="hero__content">
+<div className="hero__content">
         {/* Chinese name — large artistic */}
         <div className={`hero__name-zh ${phase >= 1 ? 'hero__name-zh--visible' : ''}`}>
           <span className="hero__char" style={{ transitionDelay: '0ms' }}>九</span>
