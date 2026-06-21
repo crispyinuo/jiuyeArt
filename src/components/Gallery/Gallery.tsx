@@ -253,9 +253,9 @@ const MEDIUM_EN: Record<string, string> = {
   '流体画': 'Fluid Art',
 }
 
-function ArtworkCard({ art }: { art: Artwork }) {
+function ArtworkCard({ art, isFeatured = false }: { art: Artwork; isFeatured?: boolean }) {
   return (
-    <div className="gcard reveal">
+    <div className={`gcard${isFeatured ? ' gcard--feature' : ''} reveal`}>
       <div className="gcard__image-wrap">
         <img
           src={art.src}
@@ -263,18 +263,29 @@ function ArtworkCard({ art }: { art: Artwork }) {
           loading="lazy"
           draggable={false}
         />
+        {isFeatured && (
+          <>
+            <div className="gcard__scrim" />
+            <div className="gcard__overlay-title">
+              <span className="gcard__overlay-zh chinese">{art.titleZh}</span>
+              <span className="gcard__overlay-en">{art.title}</span>
+            </div>
+          </>
+        )}
       </div>
-      <div className="gcard__caption">
-        <div className="gcard__caption-titles">
-          <span className="gcard__title-zh chinese">{art.titleZh}</span>
-          <span className="gcard__title-en">{art.title}</span>
+      {!isFeatured && (
+        <div className="gcard__caption">
+          <div className="gcard__caption-titles">
+            <span className="gcard__title-zh chinese">{art.titleZh}</span>
+            <span className="gcard__title-en">{art.title}</span>
+          </div>
+          <span className="gcard__meta">
+            {MEDIUM_EN[art.medium]}
+            <span className="chinese"> · {art.medium}</span>
+            {' · '}{art.year}
+          </span>
         </div>
-        <span className="gcard__meta">
-          {MEDIUM_EN[art.medium]}
-          <span className="chinese"> · {art.medium}</span>
-          {' · '}{art.year}
-        </span>
-      </div>
+      )}
     </div>
   )
 }
@@ -286,24 +297,27 @@ interface SectionProps {
   titleEn: string
   artworks: Artwork[]
   columns?: 2 | 3
+  hideHeader?: boolean
 }
 
-function GallerySection({ id, label, titleZh, titleEn, artworks, columns = 3 }: SectionProps) {
+function GallerySection({ id, label, titleZh, titleEn, artworks, columns = 3, hideHeader = false }: SectionProps) {
   const headingRef = useScrollReveal<HTMLDivElement>()
 
   return (
     <div className="gallery__section" id={id}>
-      <div className="gallery__section-header reveal" ref={headingRef}>
-        <span className="section-label">{label}</span>
-        <h3 className="gallery__section-title">
-          <span className="chinese">{titleZh}</span>
-          <span className="gallery__section-title-en">{titleEn}</span>
-        </h3>
-      </div>
+      {!hideHeader && (
+        <div className="gallery__section-header reveal" ref={headingRef}>
+          <span className="section-label">{label}</span>
+          <h3 className="gallery__section-title">
+            <span className="chinese">{titleZh}</span>
+            <span className="gallery__section-title-en">{titleEn}</span>
+          </h3>
+        </div>
+      )}
 
       <div className={`gallery__columns gallery__columns--${columns}`}>
-        {artworks.map(art => (
-          <ArtworkCard key={art.id} art={art} />
+        {artworks.map((art, index) => (
+          <ArtworkCard key={art.id} art={art} isFeatured={index % 5 === 0} />
         ))}
       </div>
     </div>
@@ -334,10 +348,12 @@ export function Gallery() {
           columns={2}
         />
 
-        <div className="gallery__section-divider">
-          <span className="gallery__section-divider-line" />
-          <span className="gallery__section-divider-dot" />
-          <span className="gallery__section-divider-line" />
+        <div className="gallery__series-break">
+          <span className="gallery__series-break-line" />
+          <h3 className="gallery__series-break-title">
+            <span className="chinese">流体画</span>
+            <span className="gallery__series-break-en">Fluid Art</span>
+          </h3>
         </div>
 
         <GallerySection
@@ -347,6 +363,7 @@ export function Gallery() {
           titleEn="Fluid Art"
           artworks={fluidArt}
           columns={3}
+          hideHeader
         />
       </div>
     </section>
