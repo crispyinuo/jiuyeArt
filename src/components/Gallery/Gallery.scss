@@ -7,7 +7,6 @@
   padding: $section-padding 0;
   background: $paper;
   position: relative;
-  overflow-x: clip;
 
   &::before {
     content: '';
@@ -109,110 +108,85 @@
   font-size: clamp(28px, 4vw, 44px);
   font-weight: 400;
   color: $ink;
-  display: block;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
 }
 
 .gallery__section-title-en {
-  display: block;
-  margin-top: 6px;
   font-family: $font-english;
-  font-size: clamp(11px, 1.1vw, 13px);
+  font-size: clamp(12px, 1.2vw, 15px);
   font-weight: 300;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: $muted;
 }
 
-// ─── Full-bleed series break (between Oil and Fluid sections) ────────────────
+// ─── Section divider ──────────────────────────────────────────────────────────
 
-.gallery__series-break {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba($ink, 0.03);
-  padding: 60px 0;
-  margin: 80px 0;
-  text-align: center;
+.gallery__section-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 72px 0;
 
-  @media (max-width: $mobile) { margin: 56px 0; padding: 48px 0; }
+  @media (max-width: $mobile) { margin: 48px 0; }
 }
 
-.gallery__series-break-line {
-  display: block;
-  width: 120px;
+.gallery__section-divider-line {
+  flex: 1;
   height: 1px;
+  background: linear-gradient(to right, transparent, $border);
+
+  &:last-child {
+    background: linear-gradient(to left, transparent, $border);
+  }
+}
+
+.gallery__section-divider-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
   background: $gold;
-  opacity: 0.35;
-  margin: 0 auto 28px;
+  flex-shrink: 0;
 }
 
-.gallery__series-break-title {
-  font-family: $font-chinese;
-  font-size: clamp(28px, 4vw, 44px);
-  font-weight: 400;
-  color: $ink;
-  display: block;
-}
-
-.gallery__series-break-en {
-  display: block;
-  margin-top: 6px;
-  font-family: $font-english;
-  font-size: clamp(11px, 1.1vw, 13px);
-  font-weight: 300;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: $muted;
-}
-
-// ─── CSS Grid ─────────────────────────────────────────────────────────────────
+// ─── CSS columns grid ─────────────────────────────────────────────────────────
 
 .gallery__columns {
-  display: grid;
-  gap: 20px;
+  column-gap: 20px;
 
   &--2 {
-    grid-template-columns: repeat(2, 1fr);
+    columns: 2;
 
-    @media (max-width: $mobile) { grid-template-columns: 1fr; }
+    @media (max-width: $tablet)  { columns: 2; }
+    @media (max-width: $mobile)  { columns: 1; }
   }
 
   &--3 {
-    grid-template-columns: repeat(3, 1fr);
+    columns: 3;
 
-    @media (max-width: $tablet) { grid-template-columns: repeat(2, 1fr); }
-    @media (max-width: $mobile) { grid-template-columns: 1fr; }
+    @media (max-width: $tablet)  { columns: 2; }
+    @media (max-width: $mobile)  { columns: 1; }
   }
 }
 
 // ─── Artwork card ─────────────────────────────────────────────────────────────
 
 .gcard {
+  break-inside: avoid;
+  margin-bottom: 20px;
   cursor: pointer;
 
-  &:hover .gcard__image-wrap img { transform: scale(1.035); }
-  &:hover .gcard__image-wrap { box-shadow: 0 12px 40px rgba($ink, 0.16); }
-  &:hover .gcard__hover-overlay { opacity: 1; }
-}
-
-// ─── Feature card (every 5th, index % 5 === 0) ───────────────────────────────
-
-.gcard--feature {
-  grid-column: 1 / -1;
-
-  .gcard__image-wrap {
-    height: 520px;
-
-    img {
-      height: 100%;
-      object-fit: cover;
-    }
+  &:hover .gcard__image-wrap img {
+    transform: scale(1.025);
   }
 
-  @media (max-width: $mobile) {
-    .gcard__image-wrap { height: 280px; }
+  &:hover .gcard__image-wrap {
+    box-shadow: 0 12px 40px rgba($ink, 0.16);
   }
+
+  @media (max-width: $mobile) { margin-bottom: 14px; }
 }
 
 .gcard__image-wrap {
@@ -226,59 +200,9 @@
     width: 100%;
     height: auto;
     display: block;
-    transition: transform 0.55s $ease-elegant;
+    transition: transform 0.6s $ease-elegant;
     user-select: none;
   }
-}
-
-.gcard__hover-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba($ink, 0.38);
-  opacity: 0;
-  transition: opacity 0.55s $ease-elegant;
-  z-index: 2;
-  pointer-events: none;
-}
-
-// Gradient scrim + title overlay (feature cards only)
-.gcard__scrim {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 55%;
-  background: linear-gradient(transparent, rgba($ink, 0.5));
-  z-index: 1;
-  pointer-events: none;
-}
-
-.gcard__overlay-title {
-  position: absolute;
-  bottom: 24px;
-  left: 24px;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.gcard__overlay-zh {
-  font-family: $font-chinese;
-  font-size: 28px;
-  font-weight: 400;
-  color: #fff;
-  line-height: 1.1;
-  letter-spacing: 0.04em;
-}
-
-.gcard__overlay-en {
-  font-family: $font-english;
-  font-size: 12px;
-  font-weight: 300;
-  color: rgba(#fff, 0.85);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
 }
 
 

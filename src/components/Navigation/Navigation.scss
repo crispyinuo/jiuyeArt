@@ -14,10 +14,9 @@
     backdrop-filter 0.4s $ease-elegant;
 
   &--scrolled {
-    padding: 16px 48px;
+    padding: 18px 48px;
     background: rgba($paper, 0.92);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba($border, 0.6);
   }
 
